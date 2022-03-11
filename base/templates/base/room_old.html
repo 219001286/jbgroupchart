@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% block contents %}
+<style>
+    .department-container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+
+    }
+</style>
+
+<div class="department-container">
+    <div>
+        <h1>{{department.name}}</h1>
+        <p>{{department.description}}</p>
+        <div class="comment-wrapper"> 
+            <h3>Conversation</h3>
+            {% for message in department_messages %}
+            <div >
+                {% if request.user == message.user %}
+                <a href="{% url 'delete_message' message.id %}">delete</a>
+                {% endif %}
+                <small>{{message.user}} {{message.created|timesince}} ago</small>
+                <br>
+                <p>{{message.body}}</p>
+                <hr>
+
+            </div>
+        {% endfor %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <div class="message_wrapper">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="body" placeholder="Write your message">
+
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <div style="border-left: 1px solid black;border-radius: 10px;">
+        <div  style="border: 2px solid rgb(27, 33, 0);border-radius: 10px 10px 10px 10px;background-color: rgb(8, 9, 4);color: aqua;height: 50px;">
+            <h3 style="text-align: center;">Participants in {{department.name}}</h3>
+        </div>
+ 
+        {% for user in participants %}
+        <p>Profile photo @{{user.username}}</p>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
