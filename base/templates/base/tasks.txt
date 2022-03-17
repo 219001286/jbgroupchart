@@ -1,0 +1,3 @@
+Current task
+============
+providing the right access to every user to be able to edit his/her profile(edit-user.html)
