@@ -21,6 +21,7 @@ distlib==0.3.4
 distro==1.5.0
 distro-info==1.0
 Django==3.2.6
+django-cors-headers==3.11.0
 django-crispy-forms==1.12.0
 django-extra-views==0.14.0
 django-money==2.0.1
@@ -36,6 +37,7 @@ future==0.18.2
 google-api-python-client==1.7.11
 google-auth==1.5.1
 google-auth-httplib2==0.0.4
+gunicorn==20.1.0
 httplib2==0.18.1
 identify==2.4.4
 idna==2.10
